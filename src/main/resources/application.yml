@@ -1,0 +1,44 @@
+# ===============================
+# = Redis configurations
+# ===============================ß
+redis:
+  database: 0
+  host: 127.0.0.1
+  port: 6379
+  password:
+  pool:
+    max-active: 8
+    max-wait: -1
+    max-idle: 8
+    min-idle: 0
+  timeout: 0
+
+spring:
+  datasource:
+    url: jdbc:h2:~/book-search
+    platform: h2
+    username: sa
+    password:
+    initialization-mode: always
+    driverClassName: org.h2.Driver
+    #data: classpath:/schema.sql, classpath:/data.sql
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+app:
+  api:
+    kakao:
+      baseUrl: https://dapi.kakao.com
+      uri: /v3/search/book
+      appKey: KakaoAK 2f5f548237c61a89a53f04539f8200cb
+    naver:
+      url: https://openapi.naver.com
+      clientId: nIrE02ahRaMnxyWqivlG
+      clientSecret: h7kZcmtQ19
