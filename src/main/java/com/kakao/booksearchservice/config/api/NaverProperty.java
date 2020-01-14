@@ -10,7 +10,8 @@ import org.springframework.stereotype.Component;
 @Setter
 @ConfigurationProperties("app.api.naver")
 public class NaverProperty {
-    private String url;
+    private String domain;
+    private String path;
     private String clientId;
     private String clientSecret;
 }

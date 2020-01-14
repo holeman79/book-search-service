@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Setter
 @ConfigurationProperties("app.api.kakao")
 public class KakaoProperty {
-    private String baseUrl;
-    private String uri;
+    private String domain;
+    private String path;
     private String appKey;
 }

@@ -35,10 +35,11 @@ spring:
 app:
   api:
     kakao:
-      baseUrl: https://dapi.kakao.com
-      uri: /v3/search/book
+      domain: https://dapi.kakao.com
+      path: /v3/search/book
       appKey: KakaoAK 2f5f548237c61a89a53f04539f8200cb
     naver:
-      url: https://openapi.naver.com
+      domain: https://openapi.naver.com
+      path: /v1/search/book.json
       clientId: nIrE02ahRaMnxyWqivlG
       clientSecret: h7kZcmtQ19
