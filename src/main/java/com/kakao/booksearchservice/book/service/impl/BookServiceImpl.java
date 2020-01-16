@@ -1,6 +1,6 @@
 package com.kakao.booksearchservice.book.service.impl;
 
-import com.kakao.booksearchservice.book.domain.dto.SearchRequest;
+import com.kakao.booksearchservice.book.domain.dto.BookSearchRequest;
 import com.kakao.booksearchservice.book.domain.naver.NaverBook;
 import com.kakao.booksearchservice.config.api.KakaoProperty;
 import com.kakao.booksearchservice.config.api.NaverProperty;
@@ -24,9 +24,9 @@ public class BookServiceImpl implements BookService {
     private final WebClient client;
 
     @HystrixCommand(commandKey = "getBooksByKakaoApi", fallbackMethod = "getBooksByNaverApi")
-    public Flux<KakaoBook> getBooksByKakaoApi(SearchRequest searchRequest){
+    public Flux<KakaoBook> getBooksByKakaoApi(BookSearchRequest bookSearchRequest){
         Flux<KakaoBook> kakaoBooks = client.get()
-                .uri(searchRequest.getKakaoUri(kakaoProperty.getDomain() + kakaoProperty.getPath()))
+                .uri(bookSearchRequest.getKakaoUri(kakaoProperty.getDomain() + kakaoProperty.getPath()))
                 .header("Authorization", kakaoProperty.getAppKey())
                 .retrieve()
                 .bodyToFlux(KakaoBook.class)
@@ -34,9 +34,9 @@ public class BookServiceImpl implements BookService {
         return kakaoBooks;
     }
 
-    public Flux<NaverBook> getBooksByNaverApi(SearchRequest searchRequest){
+    public Flux<NaverBook> getBooksByNaverApi(BookSearchRequest bookSearchRequest){
         Flux<NaverBook> naverBooks = client.get()
-                .uri(searchRequest.getNaverUri(naverProperty.getDomain() + naverProperty.getPath()))
+                .uri(bookSearchRequest.getNaverUri(naverProperty.getDomain() + naverProperty.getPath()))
                 .header("X-Naver-Client-Id", naverProperty.getClientId())
                 .header("X-Naver-Client-Secret", naverProperty.getClientSecret())
                 .retrieve()

@@ -9,13 +9,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import java.net.URI;
 import java.util.Arrays;
-import java.util.function.BiFunction;
 
 @Getter
 @Setter
-public class SearchRequest {
+public class BookSearchRequest {
     @NotNull
     private String query;
 
