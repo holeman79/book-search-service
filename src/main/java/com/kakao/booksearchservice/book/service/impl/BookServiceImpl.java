@@ -23,7 +23,7 @@ public class BookServiceImpl implements BookService {
 
     private final WebClient client;
 
-    @HystrixCommand(commandKey = "getBooksByKakaoApi", fallbackMethod = "getBooksByNaverApi")
+    //@HystrixCommand(commandKey = "getBooksByKakaoApi", fallbackMethod = "getBooksByNaverApi")
     public Flux<KakaoBook> getBooksByKakaoApi(BookSearchRequest bookSearchRequest){
         Flux<KakaoBook> kakaoBooks = client.get()
                 .uri(bookSearchRequest.getKakaoUri(kakaoProperty.getDomain() + kakaoProperty.getPath()))

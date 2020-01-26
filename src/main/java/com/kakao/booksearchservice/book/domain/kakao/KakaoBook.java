@@ -1,8 +1,5 @@
 package com.kakao.booksearchservice.book.domain.kakao;
 
-import com.kakao.booksearchservice.book.domain.kakao.Meta;
-import com.kakao.booksearchservice.book.domain.kakao.Document;
-
 import lombok.Getter;
 import lombok.Setter;
 
