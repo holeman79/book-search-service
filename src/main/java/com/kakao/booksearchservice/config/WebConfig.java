@@ -21,9 +21,9 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-//    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
-//            "classpath:/META-INF/resources/", "classpath:/resources/",
-//            "classpath:/static/", "classpath:/static/images/" };
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+            "classpath:/META-INF/resources/", "classpath:/resources/",
+            "classpath:/static/", "classpath:/static/images/" };
 
     @Bean
     public WebClient webClient(){
@@ -47,22 +47,22 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowCredentials(false).maxAge(3600);
     }
 
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/**")
-//                .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
-//    }
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations(CLASSPATH_RESOURCE_LOCATIONS);
+    }
 
-//    @Override
-//    public void addViewControllers(ViewControllerRegistry registry) {
-//        registry.addViewController("/{spring:\\w+}")
-//                .setViewName("forward:/");
-//        registry.addViewController("/**/{spring:\\w+}")
-//                .setViewName("forward:/");
-//        registry.addViewController("/{spring:\\w+}/**{spring:?!(\\.js|\\.css)$}")
-//                .setViewName("forward:/");
-//
-//    }
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/{spring:\\w+}")
+                .setViewName("forward:/");
+        registry.addViewController("/**/{spring:\\w+}")
+                .setViewName("forward:/");
+        registry.addViewController("/{spring:\\w+}/**{spring:?!(\\.js|\\.css)$}")
+                .setViewName("forward:/");
+
+    }
 
 //    @Bean
 //    public RouterFunction<ServerResponse> indexRouter(@Value("classpath:/static/index.html") final Resource indexHtml) {

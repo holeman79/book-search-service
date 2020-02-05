@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
 
@@ -20,6 +21,11 @@ public class BookController {
     public Flux<KakaoBook> getBooks(@Valid BookSearchRequest bookSearchRequest){
         Flux<KakaoBook> books = bookService.getBooksByKakaoApi(bookSearchRequest);
         return books;
+    }
+
+    @GetMapping("/aa")
+    public Mono<String> index(){
+        return Mono.just("index");
     }
 
 }

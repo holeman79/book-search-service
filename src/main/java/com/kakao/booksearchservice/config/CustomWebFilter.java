@@ -6,7 +6,7 @@ import org.springframework.web.server.WebFilter;
 import org.springframework.web.server.WebFilterChain;
 import reactor.core.publisher.Mono;
 
-@Component
+//@Component
 public class CustomWebFilter implements WebFilter {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, WebFilterChain chain) {
@@ -16,4 +16,8 @@ public class CustomWebFilter implements WebFilter {
 
         return chain.filter(exchange);
     }
+
+    private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
+        "classpath:/META-INF/resources/", "classpath:/resources/",
+        "classpath:/static/", "classpath:/static/images/" };
 }
