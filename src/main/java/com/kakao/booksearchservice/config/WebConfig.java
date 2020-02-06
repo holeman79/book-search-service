@@ -25,19 +25,6 @@ public class WebConfig implements WebMvcConfigurer {
             "classpath:/META-INF/resources/", "classpath:/resources/",
             "classpath:/static/", "classpath:/static/images/" };
 
-    @Bean
-    public WebClient webClient(){
-        return WebClient.create();
-    }
-
-    @Bean
-    public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
-        factory.setReadTimeout(2000);      // 2 sec.
-        factory.setConnectTimeout(3000);   // 3 sec.
-        return factory;
-    }
-
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")

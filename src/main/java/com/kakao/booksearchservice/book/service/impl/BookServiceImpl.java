@@ -1,12 +1,11 @@
 package com.kakao.booksearchservice.book.service.impl;
 
 import com.kakao.booksearchservice.book.domain.dto.BookSearchRequest;
+import com.kakao.booksearchservice.book.domain.kakao.KakaoBook;
 import com.kakao.booksearchservice.book.domain.naver.NaverBook;
+import com.kakao.booksearchservice.book.service.BookService;
 import com.kakao.booksearchservice.config.api.KakaoProperty;
 import com.kakao.booksearchservice.config.api.NaverProperty;
-import com.kakao.booksearchservice.book.domain.kakao.KakaoBook;
-import com.kakao.booksearchservice.book.service.BookService;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -31,6 +30,9 @@ public class BookServiceImpl implements BookService {
                 .retrieve()
                 .bodyToFlux(KakaoBook.class)
                 .subscribeOn(Schedulers.elastic());
+
+        //kakaoBooks.map()
+
         return kakaoBooks;
     }
 

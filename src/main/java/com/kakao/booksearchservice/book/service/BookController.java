@@ -18,14 +18,8 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping
-    public Flux<KakaoBook> getBooks(@Valid BookSearchRequest bookSearchRequest){
+    public Flux<KakaoBook> getBooks(@Valid BookSearchRequest bookSearchRequest) {
         Flux<KakaoBook> books = bookService.getBooksByKakaoApi(bookSearchRequest);
         return books;
     }
-
-    @GetMapping("/aa")
-    public Mono<String> index(){
-        return Mono.just("index");
-    }
-
 }
